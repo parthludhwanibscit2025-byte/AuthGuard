@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AuthGuard — Adaptive Auth & Access Control</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <div class="app">
+    <header>
+      <h1>AuthGuard</h1>
+      <p class="subtitle">Adaptive Authentication & Access Control</p>
+      <div id="user-bar" class="user-bar hidden">
+        <span id="user-info"></span>
+        <button id="btn-logout" class="btn btn-outline">Logout</button>
+      </div>
+    </header>
+    <main>
+      <section id="auth-panel" class="card">
+        <div class="tabs">
+          <button class="tab active" data-tab="login">Login</button>
+          <button class="tab" data-tab="register">Register</button>
+        </div>
+        <form id="login-form" class="form">
+          <label>Username <input type="text" id="login-username" required autocomplete="username" /></label>
+          <label>Password <input type="password" id="login-password" required autocomplete="current-password" /></label>
+          <button type="submit" class="btn btn-primary">Sign in</button>
+        </form>
+        <form id="register-form" class="form hidden">
+          <label>Username <input type="text" id="reg-username" required minlength="3" /></label>
+          <label>Email <input type="email" id="reg-email" required /></label>
+          <label>Password <input type="password" id="reg-password" required minlength="6" /></label>
+          <label>Role <select id="reg-role"><option value="user">User</option><option value="manager">Manager</option><option value="admin">Admin</option></select></label>
+          <button type="submit" class="btn btn-primary">Create account</button>
+        </form>
+        <div id="auth-message" class="message"></div>
+        <p class="demo-hint">Demo: yug / admin123 · parth / manager123 · demo / user123</p>
+      </section>
+      <section id="dashboard" class="hidden">
+        <div class="grid">
+          <div class="card"><h2>Profile</h2><pre id="profile-data">—</pre></div>
+          <div class="card">
+            <h2>Risk Evaluation</h2>
+            <div class="risk-controls">
+              <label>Device trust <select id="risk-device"><option value="known">known</option><option value="new">new</option><option value="unknown">unknown</option></select></label>
+              <label>Location <select id="risk-location"><option value="usual">usual</option><option value="new">new</option><option value="unusual">unusual</option></select></label>
+              <label class="checkbox"><input type="checkbox" id="risk-sensitive" /> Sensitive action</label>
+              <button id="btn-risk" class="btn btn-secondary">Evaluate risk</button>
+            </div>
+            <pre id="risk-data">—</pre>
+          </div>
+          <div class="card">
+            <h2>Protected Resources</h2>
+            <div class="btn-row">
+              <button class="btn btn-outline" data-resource="/api/protected">User resource</button>
+              <button class="btn btn-outline" data-resource="/api/manager">Manager resource</button>
+              <button class="btn btn-outline" data-resource="/api/admin">Admin resource</button>
+            </div>
+            <pre id="resource-data">—</pre>
+          </div>
+          <div class="card admin-only hidden"><h2>Admin Stats</h2><button id="btn-stats" class="btn btn-secondary">Refresh stats</button><pre id="stats-data">—</pre></div>
+          <div class="card admin-manager-only hidden"><h2>Audit Log</h2><button id="btn-audit" class="btn btn-secondary">Load audit</button><pre id="audit-data">—</pre></div>
+        </div>
+      </section>
+    </main>
+    <footer><p>AuthGuard academic prototype · Team Authenticators</p></footer>
+  </div>
+  <script src="js/app.js"></script>
+</body>
+</html>
