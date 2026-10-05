@@ -209,6 +209,11 @@
             <button id="btn-stats" class="btn btn-secondary">Refresh Stats</button>
             <pre id="stats-data">—</pre>
           </div>
+          <div class="card admin-only hidden">
+            <h3>All Users</h3>
+            <button id="btn-users" class="btn btn-secondary">Load Users</button>
+            <pre id="users-data">—</pre>
+          </div>
           <div class="card admin-manager-only hidden">
             <h3>Audit Log</h3>
             <button id="btn-audit" class="btn btn-secondary">Load Audit Log</button>
@@ -225,7 +230,7 @@
       <ol class="demo-steps">
         <li><strong>Login as User</strong> (<code>demo</code>) → show profile and that Admin resource is denied (403).</li>
         <li><strong>Logout → Login as Manager</strong> (<code>parth</code>) → show Manager resource works, Admin still denied.</li>
-        <li><strong>Login as Admin</strong> (<code>yug</code>) → open Admin resource, Stats and Audit log.</li>
+        <li><strong>Login as Admin</strong> (<code>yug</code>) → open Admin resource, Stats, Users list and Audit log.</li>
         <li><strong>Risk Engine</strong> → set Device = unknown, Location = unusual, Sensitive = on → score jumps to High.</li>
         <li><strong>Lockout</strong> → intentionally enter wrong password 5 times on any account to demonstrate temporary lock.</li>
         <li><strong>Register</strong> a new user to show validation and bcrypt hashing in action.</li>
