@@ -3,69 +3,267 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AuthGuard — Adaptive Auth & Access Control</title>
+  <title>AuthGuard — Adaptive Authentication & Access Control</title>
   <link rel="stylesheet" href="css/styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 </head>
 <body>
-  <div class="app">
-    <header>
-      <h1>AuthGuard</h1>
-      <p class="subtitle">Adaptive Authentication & Access Control</p>
-      <div id="user-bar" class="user-bar hidden">
-        <span id="user-info"></span>
-        <button id="btn-logout" class="btn btn-outline">Logout</button>
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="#home" class="logo">Auth<span>Guard</span></a>
+      <div class="nav-links">
+        <a href="#features">Features</a>
+        <a href="#architecture">Architecture</a>
+        <a href="#demo">Live Demo</a>
+        <a href="#team">Team</a>
       </div>
-    </header>
-    <main>
-      <section id="auth-panel" class="card">
+      <button id="nav-demo-btn" class="btn btn-sm btn-primary">Try Demo</button>
+    </div>
+  </nav>
+
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <div class="badge">Academic Prototype · BSc IT</div>
+      <h1>Adaptive Authentication<br />&amp; Access Control</h1>
+      <p class="hero-sub">
+        A complete Node.js security prototype demonstrating JWT authentication,
+        role-based access control, adaptive risk scoring, account lockout and
+        full audit logging — built for college evaluation.
+      </p>
+      <div class="hero-actions">
+        <a href="#demo" class="btn btn-primary btn-lg">Launch Live Demo</a>
+        <a href="https://github.com/parthludhwanibscit2025-byte/AuthGuard" target="_blank" class="btn btn-outline btn-lg">View on GitHub</a>
+      </div>
+      <div class="hero-stats">
+        <div><strong>3</strong><span>Roles</span></div>
+        <div><strong>JWT</strong><span>Auth</span></div>
+        <div><strong>Risk</strong><span>Engine</span></div>
+        <div><strong>Audit</strong><span>Logs</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="features" class="section">
+    <div class="container">
+      <h2 class="section-title">What We Built</h2>
+      <p class="section-sub">Six core security capabilities in one working prototype</p>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🔐</div>
+          <h3>Secure Authentication</h3>
+          <p>Registration &amp; login with bcrypt password hashing and JWT tokens. Passwords are never stored in plain text.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">👥</div>
+          <h3>Role-Based Access Control</h3>
+          <p>Three roles — Admin, Manager, User. Server-side middleware enforces permissions on every protected route.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📊</div>
+          <h3>Adaptive Risk Engine</h3>
+          <p>Calculates risk score from failed attempts, device trust, location and sensitive-action flags. Returns Low / Medium / High.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔒</div>
+          <h3>Account Lockout</h3>
+          <p>After 5 failed logins the account is temporarily locked for 15 minutes, preventing brute-force attacks.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📝</div>
+          <h3>Audit Logging</h3>
+          <p>Every login, registration and security event is recorded with timestamp, username, IP and outcome for review.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🖥️</div>
+          <h3>Interactive Dashboard</h3>
+          <p>Live web UI to test login, risk evaluation, role-protected resources, admin stats and audit logs in real time.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="architecture" class="section section-alt">
+    <div class="container">
+      <h2 class="section-title">System Architecture</h2>
+      <p class="section-sub">Clean separation of concerns for clarity and maintainability</p>
+      <div class="arch-diagram">
+        <div class="arch-layer">
+          <h4>Frontend</h4>
+          <p>HTML · CSS · Vanilla JS<br />Login, Register, Dashboard, Risk Tester</p>
+        </div>
+        <div class="arch-arrow">↓ REST APIs (JSON)</div>
+        <div class="arch-layer">
+          <h4>Express Backend</h4>
+          <p>Routes · Middleware · JWT Auth · RBAC</p>
+        </div>
+        <div class="arch-row">
+          <div class="arch-box">Security Layer<br /><small>Risk Engine · Audit · Lockout</small></div>
+          <div class="arch-box">Data Layer<br /><small>JSON File (prototype)</small></div>
+        </div>
+      </div>
+      <div class="tech-stack">
+        <span>Node.js</span><span>Express</span><span>JWT</span><span>bcrypt</span>
+        <span>RBAC</span><span>Adaptive Risk</span><span>Audit Trail</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="demo" class="section">
+    <div class="container">
+      <h2 class="section-title">Live Interactive Demo</h2>
+      <p class="section-sub">Use the demo accounts below. Everything runs against the real backend APIs.</p>
+
+      <div class="demo-accounts">
+        <div class="demo-acc" data-user="yug" data-pass="admin123">
+          <strong>Admin</strong>
+          <code>yug</code> / <code>admin123</code>
+          <button class="btn btn-xs btn-outline fill-creds">Fill</button>
+        </div>
+        <div class="demo-acc" data-user="parth" data-pass="manager123">
+          <strong>Manager</strong>
+          <code>parth</code> / <code>manager123</code>
+          <button class="btn btn-xs btn-outline fill-creds">Fill</button>
+        </div>
+        <div class="demo-acc" data-user="demo" data-pass="user123">
+          <strong>User</strong>
+          <code>demo</code> / <code>user123</code>
+          <button class="btn btn-xs btn-outline fill-creds">Fill</button>
+        </div>
+      </div>
+
+      <div id="auth-panel" class="card demo-card">
         <div class="tabs">
           <button class="tab active" data-tab="login">Login</button>
           <button class="tab" data-tab="register">Register</button>
         </div>
         <form id="login-form" class="form">
-          <label>Username <input type="text" id="login-username" required autocomplete="username" /></label>
-          <label>Password <input type="password" id="login-password" required autocomplete="current-password" /></label>
+          <label>Username <input type="text" id="login-username" required autocomplete="username" placeholder="e.g. yug" /></label>
+          <label>Password <input type="password" id="login-password" required autocomplete="current-password" placeholder="••••••••" /></label>
           <button type="submit" class="btn btn-primary">Sign in</button>
         </form>
         <form id="register-form" class="form hidden">
           <label>Username <input type="text" id="reg-username" required minlength="3" /></label>
           <label>Email <input type="email" id="reg-email" required /></label>
           <label>Password <input type="password" id="reg-password" required minlength="6" /></label>
-          <label>Role <select id="reg-role"><option value="user">User</option><option value="manager">Manager</option><option value="admin">Admin</option></select></label>
+          <label>Role
+            <select id="reg-role">
+              <option value="user">User</option>
+              <option value="manager">Manager</option>
+              <option value="admin">Admin</option>
+            </select>
+          </label>
           <button type="submit" class="btn btn-primary">Create account</button>
         </form>
         <div id="auth-message" class="message"></div>
-        <p class="demo-hint">Demo: yug / admin123 · parth / manager123 · demo / user123</p>
-      </section>
+      </div>
+
+      <div id="user-bar" class="user-bar hidden">
+        <span id="user-info"></span>
+        <button id="btn-logout" class="btn btn-outline btn-sm">Logout</button>
+      </div>
+
       <section id="dashboard" class="hidden">
         <div class="grid">
-          <div class="card"><h2>Profile</h2><pre id="profile-data">—</pre></div>
           <div class="card">
-            <h2>Risk Evaluation</h2>
+            <h3>Profile</h3>
+            <pre id="profile-data">—</pre>
+          </div>
+          <div class="card">
+            <h3>Risk Evaluation</h3>
+            <p class="card-hint">Change context flags and recalculate risk score</p>
             <div class="risk-controls">
-              <label>Device trust <select id="risk-device"><option value="known">known</option><option value="new">new</option><option value="unknown">unknown</option></select></label>
-              <label>Location <select id="risk-location"><option value="usual">usual</option><option value="new">new</option><option value="unusual">unusual</option></select></label>
-              <label class="checkbox"><input type="checkbox" id="risk-sensitive" /> Sensitive action</label>
-              <button id="btn-risk" class="btn btn-secondary">Evaluate risk</button>
+              <label>Device trust
+                <select id="risk-device">
+                  <option value="known">known</option>
+                  <option value="new">new</option>
+                  <option value="unknown">unknown</option>
+                </select>
+              </label>
+              <label>Location
+                <select id="risk-location">
+                  <option value="usual">usual</option>
+                  <option value="new">new</option>
+                  <option value="unusual">unusual</option>
+                </select>
+              </label>
+              <label class="checkbox">
+                <input type="checkbox" id="risk-sensitive" /> Sensitive action
+              </label>
+              <button id="btn-risk" class="btn btn-secondary">Evaluate Risk</button>
             </div>
             <pre id="risk-data">—</pre>
           </div>
           <div class="card">
-            <h2>Protected Resources</h2>
+            <h3>Protected Resources (RBAC)</h3>
+            <p class="card-hint">Try each button — access depends on your role</p>
             <div class="btn-row">
-              <button class="btn btn-outline" data-resource="/api/protected">User resource</button>
-              <button class="btn btn-outline" data-resource="/api/manager">Manager resource</button>
-              <button class="btn btn-outline" data-resource="/api/admin">Admin resource</button>
+              <button class="btn btn-outline" data-resource="/api/protected">User Resource</button>
+              <button class="btn btn-outline" data-resource="/api/manager">Manager Resource</button>
+              <button class="btn btn-outline" data-resource="/api/admin">Admin Resource</button>
             </div>
             <pre id="resource-data">—</pre>
           </div>
-          <div class="card admin-only hidden"><h2>Admin Stats</h2><button id="btn-stats" class="btn btn-secondary">Refresh stats</button><pre id="stats-data">—</pre></div>
-          <div class="card admin-manager-only hidden"><h2>Audit Log</h2><button id="btn-audit" class="btn btn-secondary">Load audit</button><pre id="audit-data">—</pre></div>
+          <div class="card admin-only hidden">
+            <h3>Admin Statistics</h3>
+            <button id="btn-stats" class="btn btn-secondary">Refresh Stats</button>
+            <pre id="stats-data">—</pre>
+          </div>
+          <div class="card admin-manager-only hidden">
+            <h3>Audit Log</h3>
+            <button id="btn-audit" class="btn btn-secondary">Load Audit Log</button>
+            <pre id="audit-data">—</pre>
+          </div>
         </div>
       </section>
-    </main>
-    <footer><p>AuthGuard academic prototype · Team Authenticators</p></footer>
-  </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <h2 class="section-title">Suggested Faculty Demo Flow</h2>
+      <ol class="demo-steps">
+        <li><strong>Login as User</strong> (<code>demo</code>) → show profile and that Admin resource is denied (403).</li>
+        <li><strong>Logout → Login as Manager</strong> (<code>parth</code>) → show Manager resource works, Admin still denied.</li>
+        <li><strong>Login as Admin</strong> (<code>yug</code>) → open Admin resource, Stats and Audit log.</li>
+        <li><strong>Risk Engine</strong> → set Device = unknown, Location = unusual, Sensitive = on → score jumps to High.</li>
+        <li><strong>Lockout</strong> → intentionally enter wrong password 5 times on any account to demonstrate temporary lock.</li>
+        <li><strong>Register</strong> a new user to show validation and bcrypt hashing in action.</li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="team" class="section">
+    <div class="container">
+      <h2 class="section-title">Team Authenticators</h2>
+      <div class="team-grid">
+        <div class="team-card">
+          <div class="avatar">YP</div>
+          <h3>Yug Patel</h3>
+          <p class="role">Team Leader · 038</p>
+          <p class="email">Yugpatel.bscit2025@aurouniversity.edu.in</p>
+        </div>
+        <div class="team-card">
+          <div class="avatar">PL</div>
+          <h3>Parth M. Ludhwani</h3>
+          <p class="role">Member</p>
+          <p class="email">parth.ludhwani.bscit2025@aurouniversity.edu.in</p>
+        </div>
+      </div>
+      <p class="repo-link">
+        Source code:
+        <a href="https://github.com/parthludhwanibscit2025-byte/AuthGuard" target="_blank">
+          github.com/parthludhwanibscit2025-byte/AuthGuard
+        </a>
+      </p>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>AuthGuard · Academic Prototype · Not intended for production use</p>
+    <p>Built with Node.js, Express, JWT, bcrypt &amp; adaptive risk scoring</p>
+  </footer>
+
   <script src="js/app.js"></script>
 </body>
 </html>
