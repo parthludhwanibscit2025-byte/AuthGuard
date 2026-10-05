@@ -125,7 +125,7 @@ $("#btn-logout").addEventListener("click", () => {
   localStorage.removeItem("authguard_token");
   setAuthUI(false);
   $("#auth-message").className = "message";
-  ["profile-data","risk-data","resource-data","stats-data","audit-data"].forEach(id => { const el = document.getElementById(id); if(el) el.textContent = "—"; });
+  ["profile-data","risk-data","resource-data","stats-data","audit-data","users-data"].forEach(id => { const el = document.getElementById(id); if(el) el.textContent = "—"; });
 });
 
 async function loadProfile() {
@@ -174,6 +174,14 @@ $("#btn-audit")?.addEventListener("click", async () => {
     $("#audit-data").textContent = JSON.stringify(await api("/api/audit?limit=30"), null, 2);
   } catch (err) {
     $("#audit-data").textContent = err.message;
+  }
+});
+
+$("#btn-users")?.addEventListener("click", async () => {
+  try {
+    $("#users-data").textContent = JSON.stringify(await api("/api/users"), null, 2);
+  } catch (err) {
+    $("#users-data").textContent = err.message;
   }
 });
 
